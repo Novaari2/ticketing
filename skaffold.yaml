@@ -1,8 +1,12 @@
-apiVersion: skaffold/v2beta14
+apiVersion: skaffold/v2alpha3
 kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
 build:
   local:
-    push: false
+   push: false
   artifacts:
     - image: novaari20/auth
       context: auth
@@ -10,9 +14,5 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - dest: .
-            src: 'src/**/*.ts'
-deploy:
-  kubectl:
-    manifests:
-      - ./infra/k8s/*
+          - src: 'src/**/*.ts'
+            dest: .
