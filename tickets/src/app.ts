@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError } from '@nvatickets/common';
 // import { NotFoundError } from '@spnvtickets/common';
+import { createTicketRouter } from './routes/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -16,7 +17,7 @@ app.use(
     })
 )
 
-
+app.use(createTicketRouter);
 
 app.all('*', async (req, res) => {
     throw new NotFoundError();
