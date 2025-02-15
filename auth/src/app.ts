@@ -8,8 +8,8 @@ import { currentUserRouter } from './routes/current-user';
 import { signInRouter } from './routes/signin';
 import { signOutRouter } from './routes/signout';
 import { signUpRouter } from './routes/signup';
-import { errorHandler } from './middlewares/error-handler';
-import { NotFoundError } from './errors/not-found-error';
+import { errorHandler } from '@spnvtickets/common';
+import { NotFoundError } from '@spnvtickets/common';
 
 const app = express();
 app.set('trust proxy', true);
